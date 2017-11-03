@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/GitHubJian/automation/issues"
   },
-  "homepage": "https://github.com/GitHubJian/automation#readme"
+  "homepage": "https://github.com/GitHubJian/automation#readme",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "chromedriver": "^2.33.2",
+    "jasmine": "^2.8.0",
+    "karma": "^1.7.1"
+  }
 }

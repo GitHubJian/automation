@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html lang="zh-cn">
+<header>
+    <title>Automation</title>
+</header>
+
+<body>
+    <h1>获取列表</h1>
+    <div id="user">
+    </div>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        ! function ($) {
+            $.ajax({
+                url: '/user/1',
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                },
+                error:function(x,y,z){
+                    console.log(x);
+                    console.log(y);
+                    console.log(z);
+                }
+            })
+        }(jQuery)
+    </script>
+</body>
+
+</html>

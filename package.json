@@ -23,6 +23,7 @@
     "jasmine": "^2.8.0",
     "karma": "^1.7.1",
     "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
     "koa-send": "^4.1.1",
     "koa-static": "^4.0.1"
   }

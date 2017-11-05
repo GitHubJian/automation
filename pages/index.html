@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html lang="zh-cn">
+<header>
+    <title>Automation</title>
+</header>
+
+<body>
+    <form class="form" action="" method="post">
+        <p>
+            <label for="input1">input:</label>
+            <input id="input1" type="text">
+        </p>
+        <p>
+            <label for="textarea1">textarea:</label>
+            <input id="textarea1" name="textarea">
+        </p>
+        <p>
+            <label for="select1">select:</label>
+            <select id="select1">
+                <option value="1">选项1</option>
+                <option value="2">选项2</option>
+            </select>
+        </p>
+        <p>
+            <label for="checkbox1">checkbox:</label>
+            <label>选项1
+                <input value="1" name="checkbox1" type="checkbox"></input>
+            </label>
+            <label>选项2
+                <input value="2" name="checkbox1" type="checkbox"></input>
+            </label>
+        </p>
+        <p>
+            <label for="radio1">checkbox:</label>
+            <radio value="1" name="radio1" type="radio">选择1</radio>
+            <radio value="2" name="radio2" type="radio">选择2</radio>
+        </p>
+        <p>
+            <a id="submit">提交</a>
+        </p>
+    </form>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        ! function ($) {
+            $('#submit').click(function () {
+                console.log(111);
+            })
+        }(jQuery)
+    </script>
+</body>
+
+</html>

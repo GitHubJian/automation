@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html lang="zh-cn">
 <header>
-    <title>Automation</title>
+    <title>Get-Automation</title>
 </header>
 
 <body>
@@ -12,7 +12,7 @@
     <script type="text/javascript">
         ! function ($) {
             $.ajax({
-                url: '/user/1',
+                url: '/api/users/1?name=3',
                 type: 'get',
                 dataType: 'json',
                 success: function (data) {
@@ -23,7 +23,7 @@
                     console.log(y);
                     console.log(z);
                 }
-            })
+            });
         }(jQuery)
     </script>
 </body>

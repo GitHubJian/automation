@@ -18,13 +18,24 @@
   },
   "homepage": "https://github.com/GitHubJian/automation#readme",
   "dependencies": {
+    "browserify": "^14.5.0",
+    "busboy": "^0.2.14",
     "chalk": "^2.3.0",
     "chromedriver": "^2.33.2",
+    "gulp": "^3.9.1",
     "jasmine": "^2.8.0",
+    "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
     "koa": "^2.3.0",
+    "koa-body": "^2.5.0",
     "koa-router": "^7.2.1",
     "koa-send": "^4.1.1",
-    "koa-static": "^4.0.1"
+    "koa-static": "^4.0.1",
+    "requirejs": "^2.3.5",
+    "selenium-webdriver": "^3.6.0"
   }
 }

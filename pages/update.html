@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html lang="zh-cn">
+<header>
+    <title>Update-Automation</title>
+</header>
+
+<body>
+    <h1>更新用户</h1>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        ! function ($) {
+            $.ajax({
+                url: '/api/users/1',
+                type: 'patch',
+                dataType: 'json',
+                data: {
+                    name: 3,
+                    age: 3,
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (x, y, z) {
+                    console.log(x);
+                    console.log(y);
+                    console.log(z);
+                }
+            })
+        }(jQuery)
+    </script>
+</body>
+
+</html>

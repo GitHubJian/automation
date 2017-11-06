@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html lang="zh-cn">
+<header>
+    <title>Create-Automation</title>
+</header>
+
+<body>
+    <h1>创建新用户</h1>
+    <input id="name" type="text">
+    <a id="submit">Create</a>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        ! function ($) {
+            $('#submit').click(function () {
+                let name = $('#name').val();
+                $.ajax({
+                    url: '/api/users',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        name: name,
+                        age: 3,
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (x, y, z) {
+                        console.log(x);
+                        console.log(y);
+                        console.log(z);
+                    }
+                });
+            });
+        }(jQuery)
+    </script>
+</body>
+
+</html>

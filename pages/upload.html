@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html lang="zh-cn">
+<header>
+    <title>Upload-Automation</title>
+</header>
+
+<body>
+    <h1>文件上传</h1>
+    <input id="upload" name="avatar" type="file">
+    <a id="uploadBtn">开始上传</a>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        ! function ($) {
+            $('#uploadBtn').click(function () {
+                let formData = new FormData();
+                formData.append('avatar', $('#upload')[0].files[0]);
+                $.ajax({
+                    url: '/upload/avatar',
+                    type: 'post',
+                    data: formData,
+                    contentType: undefined,
+                    mimeType: "multipart/form-data",
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (x, y, z) {
+                        console.log(x);
+                        console.log(y);
+                        console.log(z);
+                    }
+                })
+            })
+        }(jQuery)
+    </script>
+</body>
+
+</html>

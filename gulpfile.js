@@ -16,7 +16,3 @@ gulp.task('tdd', function (done) {
         configFile: __dirname + '/karma.conf.js'
     }, done).start();
 });
-
-gulp.task('page', function (done) {
-    
-})

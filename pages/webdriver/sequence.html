@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html lang="zh-cn">
+<head>
+    <title>Sequence-Webdriver</title>
+    <style>
+        #main {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sequence</h1>
+    <div id="main"></div>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        ! function ($) {
+            $('#main').mousedown(function (e) {
+                alert(e.button);
+            });
+        }(jQuery);
+    </script>
+</body>
+
+</html>

@@ -1,21 +1,14 @@
-'use strict';
-
 module.exports = function (config) {
     config.set({
         basePath: '',
-        frameworks: ['mocha'],
+        frameworks: ['jasmine'],
         files: [
-            './node_modules/should/should.js',
-            './src/*.js',
-            './test/*.js'
+            'test/*.js'
         ],
         preprocessors: {
-            'src/**/*.js': ['coverage']
+            'test/*.js': ['webpack']
         },
-        plugins: ['karma-mocha', 'karma-chrome-launcher', 'karma-coverage', 'karma-spec-reporter'],
-        browsers: ['Chrome'],
         reporters: ['spec', 'coverage'],
-        singleRun: false,
         coverageReporter: {
             dir: 'coverage',
             reporters: [{
@@ -28,6 +21,26 @@ module.exports = function (config) {
             }, {
                 type: 'text-summary'
             }]
+        },
+        port: 9876,
+        colors: true,
+        logLevel: config.LOG_INFO,
+        autoWatch: true,
+        browsers: ['PhantomJS'],
+        singleRun: false,
+        concurrency: Infinity,
+        webpack: {
+            module: {
+                loaders: [{
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/,
+                    query: {
+                        presets: ['es2015'],
+                        plugins: ['istanbul']
+                    }
+                }]
+            }
         }
     });
 };

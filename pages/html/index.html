@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html lang="zh-cn">
+<head>
+    <title>Automation</title>
+</head>
+
+<body>
+    <form class="form" action="" method="post">
+        <p>
+            <label for="input1">input:</label>
+            <input id="input1" type="text">
+        </p>
+        <p>
+            <label for="select1">select:</label>
+            <select id="select1">
+                <option value="1">选项1</option>
+                <option value="2">选项2</option>
+            </select>
+        </p>
+        <p>
+            <label>checkbox:</label>
+            <label>选项1
+                <input value="1" name="checkbox1" type="checkbox"></input>
+            </label>
+            <label>选项2
+                <input value="2" name="checkbox1" type="checkbox"></input>
+            </label>
+        </p>
+        <p>
+            <label>radio:</label>
+            <radio value="1" name="radio1" type="radio">选择1</radio>
+            <radio value="2" name="radio1" type="radio">选择2</radio>
+        </p>
+        <p>
+            <a id="submit">提交</a>
+        </p>
+    </form>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        ! function ($) {
+            $('#submit').click(function () {
+                let input1 = $('#input1').val(),
+                    select1 = $('#select1').val(),
+                    checkbox1 = [],
+                    radio1 = $("input[name='radio1']").val();
+
+                $("[name='checkbox1'][checked]").each(function () {
+                    checkbox1.push($(this).val());
+                })
+                $.ajax({
+                    url: '/submit',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        'input1': input1,
+                        'select1': select1,
+                        'checkbox1': checkbox1,
+                        'radio1': radio1
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (x, y, z) {
+                        console.log(x + y + z);
+                    }
+                })
+            })
+        }(jQuery)
+    </script>
+</body>
+
+</html>

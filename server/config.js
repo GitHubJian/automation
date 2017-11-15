@@ -1,7 +1,11 @@
 let cwd = process.cwd(),
     path = require('path');
 
-module.exports = {
+let projectConfig = require('./../project.config');
+
+let serverConfig = {
     port: 3000,
     pages: path.join(cwd, 'pages/')
 }
+
+module.exports = Object.assign(serverConfig, projectConfig);

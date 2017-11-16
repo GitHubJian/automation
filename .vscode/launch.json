@@ -13,7 +13,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Page Test",
-            "program": "${workspaceFolder}/test/driver.js"
+            "program": "${workspaceFolder}/webdriver/create/spec.js"
         },
         {
             "type": "node",

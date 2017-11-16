@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Automation Test</title>
+
+</head>
+
+<body>
+    <h1>Hello，world!</h1>
+    <form>
+        <div id="error">
+
+        </div>
+        <label>Username:</label><br>
+        <input id="input" name="username" type="text"><br>
+        <label>Sex:</label><br>
+        <input class="radio" name="radio" value="1" type="radio">Boy
+        <input class="radio" name="radio" value="2" type="radio">Gril<br>
+        <label>Hibits:</label><br>
+        <select id="select" name="Hibits">
+            <option value="1">Select 1</option>
+            <option value="2">Select 2</option>
+        </select><br>
+        <label>Sport:</label><br>
+        <input class="checkbox" name="checkbox" type="checkbox" value="1">Run 1
+        <input class="checkbox" name="checkbox" type="checkbox" value="2">Run 2<br>
+        <br>
+        <br>
+        <input id="submit" type="button" value="Submit">
+    </form>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script>
+        !(function($) {
+
+            $('#input').blur(function() {
+                $('#error').html('Input Blur');
+            });
+
+            $('#submit').click(function() {
+
+                $('#error').html('Submit Click');
+                let input = $('#input').val(),
+                    select = $('#select').val(),
+                    checkbox = [],
+                    radio = $("input[name='radio']").val();
+
+                $("[name='checkbox'][checked]").each(function() {
+                    checkbox.push($(this).val());
+                })
+
+                $.ajax({
+                    url: '/api/users',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        input1: input1,
+                        select: select,
+                        checkbox: checkbox,
+                        radio: radio
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    },
+                    error: function(x, y, z) {
+                        console.log(x);
+                        console.log(y);
+                        console.log(z);
+                    }
+                });
+            });
+        })(jQuery)
+    </script>
+</body>
+
+</html>

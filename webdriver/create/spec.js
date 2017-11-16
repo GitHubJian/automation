@@ -24,7 +24,7 @@ driver
     driver.findElement(By.id('select')).sendKeys(1);
   })
   .then(() => {
-    driver.sleep(10 * 1000);
+    driver.sleep(5 * 1000);
   })
   .then(() => {
     driver.findElement(By.id('submit')).click();

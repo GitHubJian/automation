@@ -41,6 +41,7 @@ module.exports = {
     plugins: [
         'karma-coverage',
         'karma-jasmine',
+        'karma-mocha',
         'karma-spec-reporter',
         'karma-mocha-reporter',
         'karma-sourcemap-loader',

@@ -1,6 +1,6 @@
 <template>
     <el-form>
-        <el-input class="el-input__test" :v-model="value"></el-input>
+        <el-input class="el-input__test" v-model="value"></el-input>
         <el-button type="primary" @click="click">Submit</el-button>
     </el-form>
 </template>

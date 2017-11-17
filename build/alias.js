@@ -6,5 +6,7 @@ module.exports = {
   src: resolve('src'),
   js: resolve('js'),
   entries: resolve('src/entries'),
-  test: resolve('src/test')
+  test: resolve('src/test'),
+  vue2: resolve('vue2'),
+  temp: resolve('.temp')
 };

@@ -1,66 +1,91 @@
-let alias = {
-    pages: path.resolve(__dirname, '../pages'),
-}
+const path = require('path');
 
+const cwd = process.cwd();
+const alias = require(path.join(cwd, 'build/alias.js'));
 
-let webpackConfig = {
-    resolve: {
-        alias: alias
+module.exports = config => {
+  config.set({
+    // base path that will be used to resolve all patterns (eg. files, exclude)
+    basePath: '',
+    // frameworks to use available frameworks
+    frameworks: ['mocha', 'should'],
+    // list of files / patterns to load in the browser
+    files: ['./index.js'],
+    // preprocess matching files before serving them to the browser
+    // available preprocessors:
+    preprocessors: {
+      './index.js': ['webpack']
     },
-    module: {
-        rules: [{
+    // list of files to exclude
+    exclude: [],
+    // test results reporter to use possible values: 'dots', 'progress'  available reporters
+    reporters: ['spec', 'coverage'],
+    coverageReporter: {
+      dir: 'coverage',
+      reporters: [
+        {
+          type: 'json',
+          subdir: '.',
+          file: 'coverage.json'
+        },
+        {
+          type: 'lcov',
+          subdir: '.'
+        },
+        {
+          type: 'text-summary'
+        }
+      ]
+    },
+    // web server port
+    port: 9876,
+    // enable / disable colors in the output (reporters and logs)
+    colors: true,
+    // level of logging possible values
+    logLevel: config.LOG_INFO,
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: true,
+    // start these browsers available browser launchers
+    browsers: ['Chrome'],
+    plugins: [
+      'karma-coverage',
+      'karma-mocha',
+      'karma-should',
+      'karma-commonjs',
+      'karma-requirejs',
+      'karma-spec-reporter',
+      'karma-mocha-reporter',
+      'karma-sourcemap-loader',
+      'karma-webpack',
+      'karma-phantomjs-launcher',
+      'karma-chrome-launcher'
+    ],
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: false,
+    concurrency: Infinity,
+    webpack: {
+      resolve: {
+        alias: alias
+      },
+      module: {
+        loaders: [
+          {
             test: /\.js$/,
             loader: 'babel-loader',
+            exclude: /node_modules/,
+            query: {
+              presets: ['es2015'],
+              plugins: ['istanbul']
+            }
+          },
+          {
+            test: /\.vue$/,
+            loader: 'vue-loader',
             exclude: /node_modules/
-        }]
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            __WEEX__: false,
-            'process.env': {
-                NODE_ENV: '"development"',
-                TRANSITION_DURATION: 50,
-                TRANSITION_BUFFER: 10
-            }
-        })
-    ],
-    devtool: '#cheap-module-eval-source-map'
-}
-
-module.exports = (config) => {
-    config.set({
-        browsers: ['Chrome'],
-        customLaunchers: {
-            Chrome_travis_ci: {
-                base: 'Chrome',
-                flags: ['--no-sandbox']
-            }
-        },
-        frameworks: ['mocha', 'sinon-chai'],
-        reporters: ['spec', 'coverage'],
-        files: ['./index.js'],
-        preprocessors: {
-            './index.js': ['webpack', 'sourcemap']
-        },
-        webpackMiddleware: {
-            noInfo: true
-        },
-        coverageReporter: {
-            dir: './coverage',
-            reporters: [{
-                    type: 'lcov',
-                    subdir: '.'
-                },
-                {
-                    type: 'text-summary'
-                }
-            ]
-        },
-        client: {
-            mocha: {
-                timeout: 4000
-            }
-        },
-        webpack: webpackConfig
-    })
-}
+          }
+        ]
+      }
+    }
+  });
+};
